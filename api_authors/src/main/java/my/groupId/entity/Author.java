@@ -1,16 +1,7 @@
 package my.groupId.entity;
 
 import java.time.LocalDate;
+import org.eclipse.microprofile.graphql.Id;
+import org.eclipse.microprofile.graphql.NonNull;
 
-public class Author {
-
-  public Author(Integer id, String name, LocalDate birthday) {
-    this.id = id;
-    this.name = name;
-    this.birthday = birthday;
-  }
-
-  public Integer id;
-  public String name;
-  public LocalDate birthday;
-}
+public record Author(@Id Integer id, @NonNull String name, @NonNull LocalDate birthday) {}

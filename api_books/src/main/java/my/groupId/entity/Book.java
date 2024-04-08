@@ -1,14 +1,14 @@
 package my.groupId.entity;
 
-public class Book {
+import io.smallrye.graphql.api.federation.Extends;
+import io.smallrye.graphql.api.federation.Key;
+import java.util.List;
 
-  public Book(Integer id, Integer author_id, String title) {
-    this.id = id;
-    this.author_id = author_id;
-    this.title = title;
+@Key(fields = "id")
+public record Book(String id, String title, Author author) {
+
+  @Extends @Key(fields = "id")
+  public record Author(String id, String name, List<Book> books) {
   }
 
-  public Integer id;
-  public Integer author_id;
-  public String title;
 }
